@@ -1,3 +1,4 @@
+@import "{{ site.theme }}";
 @import "variables";
 @import "mixins";
 
@@ -137,7 +138,7 @@ span {
     padding: 100px 0;
     text-align: center;
     color: white;
-    background: url(../../img/images/main.jpg) no-repeat bottom center scroll;
+    background: url(../img/images/main.jpg) no-repeat bottom center scroll;
     background-position-y : 55%;
     background-color: black;
     -webkit-background-size: cover;
@@ -215,7 +216,7 @@ span {
     width: 100%;
     padding: 50px 0;
     color: white;
-    background: url(../../img/images/resume.jpeg) no-repeat center center scroll;
+    background: url(../img/images/resume.jpeg) no-repeat center center scroll;
     background-color: black;
     -webkit-background-size: cover;
     -moz-background-size: cover;
