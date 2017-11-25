@@ -137,7 +137,7 @@ a:hover, a:focus {
   padding: 100px 0;
   text-align: center;
   color: white;
-  background: url(../img/pics/main.jpg) no-repeat bottom center scroll;
+  background: url(../img/icons/main.jpg) no-repeat bottom center scroll;
   background-position-y: 55%;
   background-color: black;
   -webkit-background-size: cover;
