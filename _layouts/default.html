@@ -5,8 +5,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Jason Liu">
+    <meta name="keywords" content ="Computer Science, CS, Programming, Jason Liu, Cheng Chun Liu, 유승준, Berkeley, EECS, Data, Data Science" />
+    <meta name="author" content="유승준 (Jason Liu)">
 
     <title>YuJa</title>
 
@@ -20,7 +21,7 @@
 
 
     <!-- Theme CSS -->
-    <link href="../assets/css/style.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
@@ -33,7 +34,7 @@
                 Menu <i class="fa fa-bars"></i>
             </button>
             <a class="navbar-brand page-scroll animated fadeIn" href="#page-top">
-                <img src="img/icons/home.png" alt="Home">
+                <img src="../assets/img/icons/home.png" alt="Home">
             </a>
         </div>
 
@@ -72,9 +73,9 @@
                     <h1 class="brand-heading animated fadeInRight">Jason Liu</h1>
                     <p class="intro-text animated fadeInLeft">University of California, Berkeley
                         <br>Computer Science</p>
-                    <a href="#about" class="btn btn-circle page-scroll">
-                        <i class="fa fa-angle-double-down animated"></i>
-                    </a>
+                    <!-- <a href="#about" class="button-wrap page-scroll">
+                        <i class="button-core"></i>
+                    </a> -->
                 </div>
             </div>
         </div>
@@ -83,43 +84,85 @@
 
 <!-- About Section -->
 <section id="about" class="container content-section text-left">
-    <div class="row console">
-        <div class="col-lg-10">
-            <h2>About Jason</h2>
-            <p>>>> Jason.name</p>
-            <span>{'Korean': '유승준', 'English': 'Jason Liu', 'Chinese': '劉承俊'}</span>
-            <p>>>> Jason.origin</p>
-            <span>'Seoul, South Korea'</span>
-            <p>>>> Jason.education.school</p>
-            <span>'University of California, Berkeley'</span>
-            <p>>>> Jason.education.major</p>
-            <span>'Computer Science'</span>
-            <p>>>> Jason.education.year</p>
-            <span>'Junior'</span>
-            <p>>>> Jason.interests</p>
-            <span>['mindfulness', 'meditation', 'computer science', 'you']</span>
-            <div class='second_btn'>
-                <a href="#resume" class="btn btn-circle page-scroll text-center">
-                    <i class="fa fa-angle-double-down animated"></i>
-                </a>
-            </div>
-        </div>
-    </div>
+<h2>About Jason</h2>
+<pre id="typewriter">
+<span class="reserved-highlight">class</span> <span class="var-highlight">Jason</span>:
+    def __init__(<span class="parameter-highlight">self</span>):
+        <span class="self-highlight">self</span>.name = {
+            <span class="string-highlight">'Korean'</span>: <span class="string-highlight">'유승준'</span>,
+            <span class="string-highlight">'English'</span>: <span class="string-highlight">'Jason Liu'</span>,
+            <span class="string-highlight">'Chinese'</span>: <span class="string-highlight">'劉承俊'</span>,
+        }
+        <span class="self-highlight">self</span>.school = <span class="string-highlight">'University of California, Berkeley'</span>
+        <span class="self-highlight">self</span>.origin = <span class="string-highlight">'Seoul, South Korea'</span>
+        <span class="self-highlight">self</span>.interests = [<span class="string-highlight">
+            'mindfulness',
+            'meditation',
+            'computer science',
+            'you',</span>
+        ]
+        <span class="self-highlight">self</span>.coursework = [<span class="string-highlight">
+            'CS61A: ',
+            'CS61B: ',
+            'CS61C: ',
+            'CS70: ',
+            'EE16A: '
+            'MATH 1A',
+        ]
+</pre>
+
+<!-- <div class='second_btn'>
+  <a href="#resume" class="button-wrap page-scroll text-center"><i class="button-core"></i></a>
+</div> -->
+
+<!-- <pre id="typewriter">
+<span class="var-highlight">Jason</span> = {
+    name: [<span class="string-highlight">
+        'Korean': '유승준',
+        'English': 'Jason Liu',
+        'Chinese': '劉承俊',
+    </span>],
+    school: <span class="string-highlight">'University of California, Berkeley'</span>,
+    origin: <span class="string-highlight">'Seoul, South Korea'</span>,
+    properties: [<span class="string-highlight">
+        'Python',
+        'C++',
+        'HTML',
+        'CSS',
+    </span>],
+}
+</pre>-->
 </section>
 
 <!-- resume Section -->
 <section id="resume" class="content-section text-center">
-    <div class="resume-section">
+    <div class="resume-wrapper">
         <div class="container">
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>Resume</h2>
-                <p>To get to know more about my history, check out my resume!</p>
-                <a href="https://www.dropbox.com/s/vxys8zhjajacskf/JasonYuProfile.pdf?dl=0"
-                   class="btn btn-default btn-lg" target="_blank">Visit resume Page</a>
-                <br>
-                <a href="#contact" class="btn btn-circle page-scroll">
+                <h3 class="text-left">Projects</h3>
+                <ul class="projects text-left">
+                  <li class="hog"><a href="https://github.com/yordlejason/cs61a/tree/master/Projects/hog?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BL%2B2UmFe1RJmexTMbn%2Brpog%3D%3D" target="_blank"><h4>Game of Hog Project</h4></a></li>
+                  <li class="ants"><a href="https://github.com/yordlejason/cs61a/tree/master/Projects/ants?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BL%2B2UmFe1RJmexTMbn%2Brpog%3D%3D" target="_blank"><h4>Ants vs Some Bees Project</h4></a></li>
+                  <li class="maps"><a href="https://github.com/yordlejason/cs61a/tree/master/Projects/maps?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BL%2B2UmFe1RJmexTMbn%2Brpog%3D%3D" target="_blank"><h4>Maps Project</h4></a></li>
+                  <li class="scheme"><a href="https://github.com/yordlejason/cs61a/tree/master/Projects/scheme?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BL%2B2UmFe1RJmexTMbn%2Brpog%3D%3D" target="_blank"><h4>Scheme Project</h4></a></li>
+                </ul>
+                <h3 class="text-left">Experiences</h3>
+                <ul class="experiences text-left">
+                  <li><h4><a href="https://mujinassociates.com">Research Assistant</a></h4></li>
+                  <li><h4><a href="https://dvc.edu">Supplemental Instructor</a></h4></li>
+                  <li><h4><a href="https://dvc.edu">Teaching Assistant</a></h4></li>
+                  <li><h4><a href="https://dsh.com">Data Management Representative</a></h4></li>
+                </ul>
+                <div class="resume_pdf">
+                  <p>To get to know more about my history, check out my resume!</p>
+                  <a href="https://www.dropbox.com/s/vxys8zhjajacskf/JasonYuProfile.pdf?dl=0"
+                     class="btn btn-default btn-lg" target="_blank">Visit resume Page</a>
+                  <br>
+                </div>
+                <!-- <a href="#contact" class="btn btn-circle page-scroll">
                     <i class="fa fa-angle-double-down animated"></i>
-                </a>
+                </a> -->
             </div>
         </div>
     </div>
@@ -132,9 +175,9 @@
             <h2>Contact</h2>
             <p>Ask me anything, or just say hello!</p>
             <ul class="contact-info">
-              <li><p><a href="callto:+19256394355"><img src="img/icons/united-states.png" alt=""><span style="direction:rtl; unicode-bidi:bidi-override;">5534-936-529 1+</span></a></p></li>
-              <li><p><a href="callto:+821068046166"><img src="img/icons/south-korea.png" alt=""><span style="direction:rtl; unicode-bidi:bidi-override;">6616-4086-010 28+</span></a></p></li>
-              <li><p><a href="mailto:yordlejason@gmail.com"><img src="img/icons/email.png" alt=""><span style="direction:rtl; unicode-bidi:bidi-override;">moc.liamg@nosajeldroy</span></a></p></li>
+              <li><p><a href="callto:+19256394355"><img src="../assets/img/icons/united-states.png" alt=""><span style="direction:rtl; unicode-bidi:bidi-override;">5534-936-529 1+</span></a></p></li>
+              <li><p><a href="callto:+821068046166"><img src="../assets/img/icons/south-korea.png" alt=""><span style="direction:rtl; unicode-bidi:bidi-override;">6616-4086-010 28+</span></a></p></li>
+              <li><p><a href="mailto:yordlejason@gmail.com"><img src="../assets/img/icons/email.png" alt=""><span style="direction:rtl; unicode-bidi:bidi-override;">moc.liamg@nosajeldroy</span></a></p></li>
             </ul>
             <ul class="list-inline banner-social-buttons">
                 <li><a href="https://www.facebook.com/fruity.yuja" class="btn btn-default btn-lg" target="_blank"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a></li>
@@ -177,18 +220,19 @@
 </footer>
 
 <!-- jQuery -->
-<script src="style/jquery/jquery.min.js"></script>
+<script src="../assets/jquery/jquery.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="style/js/bootstrap.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
 
 <!-- Plugin JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script src="../assets/js/typing.min.js"></script>
 <!-- <script id="dsq-count-scr" src="//yuja.disqus.com/count.js" async></script> -->
 
 
 <!-- Theme JavaScript -->
-<script src="style/js/gs.min.js"></script>
+<script src="../assets/js/gs.min.js"></script>
 
 </body>
 
