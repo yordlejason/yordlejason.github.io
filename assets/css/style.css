@@ -137,7 +137,7 @@ a:hover, a:focus {
   padding: 100px 0;
   text-align: center;
   color: white;
-  background: url(../img/icons/main.jpg) no-repeat bottom center scroll;
+  background: url(../img/main.jpg) no-repeat bottom center scroll;
   background-position-y: 55%;
   background-color: black;
   -webkit-background-size: cover;
@@ -230,7 +230,7 @@ a:hover, a:focus {
 }
 
 .resume-wrapper .container ul.projects li.hog {
-  background: url(../img/images/hog.png) no-repeat;
+  background: url(../img/hog.png) no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
