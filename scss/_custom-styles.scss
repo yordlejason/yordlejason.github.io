@@ -279,6 +279,31 @@ section.resume-section {
       }
     }
   }
+  
+  // Project-specific adjustments for the collapsible layout
+  .project-item.collapsible-container {
+    .content-header {
+      .project-title {
+        flex: 1;
+        
+        a {
+          color: $gray-800;
+          text-decoration: none;
+          font-weight: 600;
+          
+          &:hover {
+            color: $primary;
+          }
+        }
+      }
+    }
+    
+    .project-date {
+      color: $gray-600;
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
+    }
+  }
 }
 
 // Enhanced interests section styling
@@ -418,5 +443,131 @@ section.resume-section {
     .resume-item {
       flex-direction: column !important;
     }
+  }
+}
+
+// Enhanced collapsible container with better hover stability
+.collapsible-container {
+  position: relative;
+  
+  .content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    // Extend hover area for better stability
+    padding: 0.25rem;
+    margin: -0.25rem;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+    
+    &:hover {
+      background-color: rgba(0, 123, 255, 0.05);
+    }
+    
+    h3, h4, .project-title {
+      margin: 0;
+    }
+  }
+  
+  // Better hover indication
+  &.hovering .content-header {
+    background-color: rgba(0, 123, 255, 0.05);
+  }
+}
+
+.visibility-toggle {
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  color: $gray-600;
+  opacity: 1; // Always visible
+  
+  &:hover {
+    background: rgba($primary, 0.1);
+    color: $primary;
+  }
+  
+  &:focus {
+    outline: 2px solid $primary;
+    outline-offset: 2px;
+  }
+  
+  // Locked state: show lock icon
+  &[data-locked="true"] {
+    color: $gray-800;
+    
+    &:hover {
+      background: rgba($gray-400, 0.1);
+      color: $gray-800;
+    }
+  }
+  
+  i {
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+  }
+}
+
+// Collapsible details behavior with natural expansion
+.collapsible-details {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+              opacity 0.3s ease;
+  margin: 0;
+  padding: 0;
+  
+  // When shown, expand naturally
+  &.show {
+    max-height: 2000px; // Large enough for content
+    opacity: 1;
+    margin: 0.75rem 0 0 0;
+    padding: 0.5rem 0;
+  }
+}
+
+// Special handling for education section (coursework) - prevent layout shift
+#education .collapsible-container {
+  .collapsible-details {
+    // Always maintain consistent space for coursework to prevent layout shift
+    min-height: 0;
+    max-height: none;
+    height: auto;
+    overflow: visible;
+    transition: opacity 0.3s ease;
+    margin: 0.75rem 0 0 0;
+    padding: 0.5rem 0;
+    opacity: 0;
+    visibility: hidden;
+    
+    &.show {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+// Legacy support for existing position structure
+.position-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  h4 {
+    margin: 0;
+  }
+}
+
+.position-details {
+  transition: all 0.3s ease;
+  overflow: hidden;
+  
+  &.collapsing {
+    height: 0;
+    opacity: 0;
   }
 }
