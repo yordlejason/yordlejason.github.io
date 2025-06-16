@@ -334,14 +334,27 @@ section.resume-section {
         background: rgba(255, 255, 255, 0.95);
       }
       
-      i {
-        font-size: 4rem;
+      i,
+      .interest-icon {
+        font-size: 2.5rem;
+        width: 2.5rem;
+        height: 2.5rem;
         color: $primary;
         margin-bottom: 1rem;
         transition: all 0.3s ease;
         
         &:hover {
           color: darken($primary, 10%);
+          transform: scale(1.1);
+        }
+      }
+      
+      .interest-icon {
+        object-fit: contain;
+        filter: invert(46%) sepia(80%) saturate(600%) hue-rotate(340deg) brightness(90%) contrast(85%);
+        
+        &:hover {
+          filter: invert(40%) sepia(85%) saturate(650%) hue-rotate(340deg) brightness(85%) contrast(90%);
           transform: scale(1.1);
         }
       }
@@ -364,8 +377,11 @@ section.resume-section {
       .list-inline-item {
         padding: 1rem;
         
-        i {
-          font-size: 3rem;
+        i,
+        .interest-icon {
+          font-size: 2rem;
+          width: 2rem;
+          height: 2rem;
         }
         
         .subheading {
@@ -380,8 +396,11 @@ section.resume-section {
       .list-inline-item {
         padding: 0.75rem;
         
-        i {
-          font-size: 2.5rem;
+        i,
+        .interest-icon {
+          font-size: 1.5rem;
+          width: 1.5rem;
+          height: 1.5rem;
         }
         
         .subheading {
