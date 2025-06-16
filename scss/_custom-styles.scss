@@ -509,6 +509,30 @@ section.resume-section {
     font-size: 1.2rem;
     transition: all 0.3s ease;
   }
+  
+  // Fallback icon styles for when Font Awesome fails to load
+  .fallback-icon {
+    font-size: 1.2rem;
+    line-height: 1;
+    display: inline-block;
+    width: 1.2rem;
+    text-align: center;
+  }
+}
+
+// Additional error handling for production environments
+@media screen {
+  .visibility-toggle {
+    // Ensure minimum size even if icon fails to load
+    min-width: 32px;
+    min-height: 32px;
+    
+    // Better fallback for broken icon fonts
+    &:empty:before {
+      content: "👁️";
+      font-size: 1.2rem;
+    }
+  }
 }
 
 // Collapsible details behavior with natural expansion

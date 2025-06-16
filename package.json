@@ -20,11 +20,13 @@
         "url": "https://github.com/yordlejason/yordlejason.github.io.git"
     },
     "scripts": {
-        "build": "sass scss/resume.scss css/resume.css && sass scss/resume.scss css/resume.min.css --style compressed",
+        "build": "sass scss/resume.scss css/resume.css && sass scss/resume.scss css/resume.min.css --style compressed && uglifyjs js/resume.js -o js/resume.min.js",
         "watch": "sass --watch scss:css",
-        "serve": "python3 -m http.server 8000"
+        "serve": "python3 -m http.server 8000",
+        "deploy": "npm run build && echo 'Build completed for production deployment'"
     },
     "devDependencies": {
-        "sass": "^1.60.0"
+        "sass": "^1.60.0",
+        "uglify-js": "^3.19.3"
     }
 }

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 body {
   font-family: "Open Sans", serif;
   padding-top: 54px;
@@ -539,7 +540,24 @@ section.resume-section#interests {
   font-size: 1.2rem;
   transition: all 0.3s ease;
 }
+.visibility-toggle .fallback-icon {
+  font-size: 1.2rem;
+  line-height: 1;
+  display: inline-block;
+  width: 1.2rem;
+  text-align: center;
+}
 
+@media screen {
+  .visibility-toggle {
+    min-width: 32px;
+    min-height: 32px;
+  }
+  .visibility-toggle:empty:before {
+    content: "👁️";
+    font-size: 1.2rem;
+  }
+}
 .collapsible-details {
   max-height: 0;
   opacity: 0;

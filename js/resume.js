@@ -7,6 +7,13 @@
     return;
   }
 
+  // Debug information for production troubleshooting
+  if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+    console.log('Resume script loaded on production environment');
+    console.log('jQuery version:', $.fn.jquery);
+    console.log('Page loaded at:', new Date().toISOString());
+  }
+
   // Smooth scrolling using jQuery easing with improved performance
   $('a.js-scroll-trigger[href*="#"]:not([href="#"])').on('click', function(e) {
     if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && 
@@ -111,6 +118,16 @@
     const isLocked = $button.attr('data-locked') === 'true';
     const containerId = $button.closest('.collapsible-container').index();
     
+    // Debug logging for production troubleshooting
+    if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+      console.log('Visibility toggle clicked:', {
+        hasIcon: $icon.length > 0,
+        hasDetails: $details.length > 0,
+        isLocked: isLocked,
+        containerId: containerId
+      });
+    }
+    
     // Clear any hover timeout when clicking
     if (hoverTimeouts.has(containerId)) {
       clearTimeout(hoverTimeouts.get(containerId));
@@ -123,7 +140,11 @@
       $button.attr('aria-label', 'Show details on hover');
       // Change back to closed eye and hide details
       preserveCursorPosition($button, () => {
-        $icon.removeClass('fa-lock fa-eye').addClass('fa-eye-slash');
+        if ($icon.length > 0) {
+          $icon.removeClass('fa-lock fa-eye').addClass('fa-eye-slash');
+        } else {
+          $button.find('.fallback-icon').text('👁️');
+        }
         $details.removeClass('show');
       });
       return;
@@ -134,7 +155,11 @@
     $button.attr('aria-label', 'Locked - click to unlock');
     // Change to lock icon and show details
     preserveCursorPosition($button, () => {
-      $icon.removeClass('fa-eye fa-eye-slash').addClass('fa-lock');
+      if ($icon.length > 0) {
+        $icon.removeClass('fa-eye fa-eye-slash').addClass('fa-lock');
+      } else {
+        $button.find('.fallback-icon').text('🔒');
+      }
       $details.addClass('show');
     });
   });
@@ -156,7 +181,11 @@
     // Only change to open eye and show details if not locked
     if (!isLocked) {
       preserveCursorPosition($button, () => {
-        $icon.removeClass('fa-eye-slash').addClass('fa-eye');
+        if ($icon.length > 0) {
+          $icon.removeClass('fa-eye-slash').addClass('fa-eye');
+        } else {
+          $button.find('.fallback-icon').text('👀');
+        }
         $details.addClass('show');
       });
     }
@@ -181,7 +210,11 @@
         // Double-check the button still exists and isn't locked
         if ($button.length && $button.attr('data-locked') !== 'true') {
           preserveCursorPosition($button, () => {
-            $icon.removeClass('fa-eye').addClass('fa-eye-slash');
+            if ($icon.length > 0) {
+              $icon.removeClass('fa-eye').addClass('fa-eye-slash');
+            } else {
+              $button.find('.fallback-icon').text('👁️');
+            }
             $details.removeClass('show');
           });
         }
@@ -221,7 +254,11 @@
       const timeoutId = setTimeout(function() {
         if ($button.length && $button.attr('data-locked') !== 'true') {
           preserveCursorPosition($button, () => {
-            $icon.removeClass('fa-eye').addClass('fa-eye-slash');
+            if ($icon.length > 0) {
+              $icon.removeClass('fa-eye').addClass('fa-eye-slash');
+            } else {
+              $button.find('.fallback-icon').text('👁️');
+            }
             $details.removeClass('show');
           });
         }
@@ -241,10 +278,34 @@
       
       $button.attr('data-locked', 'false');
       $button.attr('aria-label', 'Show details on hover');
+      
       // Ensure icon starts as closed eye and details are hidden
-      $icon.removeClass('fa-eye fa-lock').addClass('fa-eye-slash');
+      if ($icon.length > 0) {
+        $icon.removeClass('fa-eye fa-lock').addClass('fa-eye-slash');
+      } else {
+        // Fallback if Font Awesome icons aren't loaded
+        $button.text('👁️');
+        $button.attr('data-fallback-icon', 'true');
+      }
+      
       $details.removeClass('show');
     });
+    
+    // Check if Font Awesome is loaded
+    const testIcon = $('<i class="fa fa-eye" style="position: absolute; left: -9999px;"></i>').appendTo('body');
+    const fontFamily = testIcon.css('font-family');
+    testIcon.remove();
+    
+    if (fontFamily.indexOf('FontAwesome') === -1) {
+      console.warn('Font Awesome may not be loaded properly. Using fallback icons.');
+      $('.visibility-toggle').each(function() {
+        const $button = $(this);
+        if (!$button.attr('data-fallback-icon')) {
+          $button.find('i').remove();
+          $button.append('<span class="fallback-icon">👁️</span>');
+        }
+      });
+    }
   });
 
 })(jQuery);
