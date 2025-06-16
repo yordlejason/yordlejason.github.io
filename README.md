@@ -1,32 +1,136 @@
-# [Start Bootstrap - Resume](https://startbootstrap.com/template-overviews/resume/)
+# Jason Yu - Resume Website
 
-[Resume](https://startbootstrap.com/template-overviews/resume/) is a resume and CV theme for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/). This theme features a fixed sidebar with content sections to build a simple, yet elegant resume.
+A modern, responsive resume website built with Bootstrap, Sass, and vanilla JavaScript.
 
-## Preview
+## 🚀 Features
 
-[![Resume Preview](https://startbootstrap.com/assets/img/templates/resume.jpg)](https://blackrockdigital.github.io/startbootstrap-resume/)
+- **Responsive Design**: Optimized for desktop, tablet, and mobile devices
+- **Modern UI**: Clean, professional design with smooth animations
+- **Accessibility**: ARIA labels, semantic markup, and keyboard navigation
+- **Performance**: Minified CSS/JS, optimized images, and fast loading
+- **SEO Optimized**: Proper meta tags and structured content
 
-**[View Live Preview](https://blackrockdigital.github.io/startbootstrap-resume/)**
+## 🛠️ Technology Stack
 
-## Status
+- **HTML5**: Semantic markup with accessibility features
+- **SCSS/CSS3**: Modern styling with variables and mixins
+- **JavaScript**: Vanilla JS for smooth scrolling and interactions
+- **Bootstrap 4**: Grid system and responsive utilities
+- **Font Awesome**: Icon library
+- **Sass**: CSS preprocessing
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/BlackrockDigital/startbootstrap-resume/master/LICENSE)
-[![npm version](https://img.shields.io/npm/v/startbootstrap-resume.svg)](https://www.npmjs.com/package/startbootstrap-resume)
-[![Build Status](https://travis-ci.org/BlackrockDigital/startbootstrap-resume.svg?branch=master)](https://travis-ci.org/BlackrockDigital/startbootstrap-resume)
-[![dependencies Status](https://david-dm.org/BlackrockDigital/startbootstrap-resume/status.svg)](https://david-dm.org/BlackrockDigital/startbootstrap-resume)
-[![devDependencies Status](https://david-dm.org/BlackrockDigital/startbootstrap-resume/dev-status.svg)](https://david-dm.org/BlackrockDigital/startbootstrap-resume?type=dev)
+## 📦 Project Structure
 
-## Download and Installation
+```
+├── css/                 # Compiled CSS files
+├── scss/               # Source SCSS files
+│   ├── _variables.scss # Color and spacing variables
+│   ├── _mixins.scss    # Reusable mixins
+│   ├── _global.scss    # Global styles
+│   ├── _nav.scss       # Navigation styles
+│   ├── _custom-styles.scss # Custom component styles
+│   └── resume.scss     # Main SCSS file
+├── js/                 # JavaScript files
+├── img/                # Images and assets
+├── vendor/             # Third-party libraries
+├── index.html          # Main HTML file
+├── package.json        # Project dependencies
+└── build.sh            # Build script
+```
 
-To begin using this template, choose one of the following options to get started:
-* [Download the latest release on Start Bootstrap](https://startbootstrap.com/template-overviews/resume/)
-* Install via npm: `npm i startbootstrap-resume`
-* Clone the repo: `git clone https://github.com/BlackrockDigital/startbootstrap-resume.git`
-* [Fork, Clone, or Download on GitHub](https://github.com/BlackrockDigital/startbootstrap-resume)
+## 🔧 Development
 
-## Usage
+### Prerequisites
 
-### Basic Usage
+- Node.js (v14 or higher)
+- npm
+
+### Setup
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yordlejason/yordlejason.github.io.git
+   cd yordlejason.github.io
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Build the project:
+   ```bash
+   npm run build
+   ```
+
+### Available Scripts
+
+- `npm run build` - Compile SCSS to CSS and minify
+- `npm run watch` - Watch SCSS files for changes and auto-compile
+- `npm run serve` - Start a local development server
+
+### Manual Build
+
+You can also use the build script directly:
+```bash
+./build.sh
+```
+
+## 🎨 Customization
+
+### Colors and Theming
+
+Edit `scss/_variables.scss` to customize:
+- Primary color scheme
+- Typography settings
+- Spacing and layout variables
+
+### Content
+
+Update `index.html` to modify:
+- Personal information
+- Work experience
+- Projects and achievements
+- Contact information
+
+### Styling
+
+Modify SCSS files in the `scss/` directory:
+- `_global.scss` - Global styles and typography
+- `_nav.scss` - Navigation styling
+- `_custom-styles.scss` - Custom component styles
+
+## 🚀 Deployment
+
+The site is deployed to GitHub Pages and automatically updates when changes are pushed to the main branch.
+
+**Live Site**: [https://yordlejason.github.io](https://yordlejason.github.io)
+
+## 📱 Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+- Mobile browsers (iOS Safari, Chrome Mobile)
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🤝 Contributing
+
+While this is a personal resume website, suggestions for improvements are welcome! Feel free to open an issue or submit a pull request.
+
+## 📞 Contact
+
+- **Email**: yordlejason@gmail.com
+- **LinkedIn**: [linkedin.com/in/doordash](https://www.linkedin.com/in/doordash/)
+- **GitHub**: [github.com/yordlejason](https://github.com/yordlejason)
+
+---
+
+*Built with ❤️ by Jason Yu*
 
 After downloading, simply edit the HTML and CSS files included with the template in your favorite text editor to make changes. These are the only files you need to worry about, you can ignore everything else! To preview the changes you make to the code, you can open the `index.html` file in your web browser.
 

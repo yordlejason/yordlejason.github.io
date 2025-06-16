@@ -1,0 +1,410 @@
+// Custom styles for improved resume template
+
+// Section background colors with more evident alternating pattern
+section.resume-section {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  
+  // Ensure full width background
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  padding-left: calc(50vw - 50%);
+  padding-right: calc(50vw - 50%);
+  
+  @media (min-width: 992px) {
+    // Reset margin/padding for larger screens since sidebar takes up space
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  
+  // Consistent alternating pattern with more evident differences
+  &#about {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+  
+  &#experience {
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+    box-shadow: inset 0 1px 3px rgba(33, 150, 243, 0.1);
+  }
+  
+  &#education {
+    background: linear-gradient(135deg, #ffffff 0%, #f3e5f5 100%);
+    box-shadow: inset 0 1px 3px rgba(156, 39, 176, 0.08);
+  }
+  
+  &#awards {
+    background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+    box-shadow: inset 0 1px 3px rgba(255, 152, 0, 0.1);
+  }
+  
+  &#interests {
+    background: linear-gradient(135deg, #ffffff 0%, #e8f5e8 100%);
+    box-shadow: inset 0 1px 3px rgba(76, 175, 80, 0.08);
+  }
+}
+
+// Contact section styles
+.contact-info {
+  .contact-item {
+    display: flex;
+    align-items: center;
+    margin: 0.5rem 1rem;
+    
+    i {
+      margin-right: 0.5rem;
+    }
+    
+    a {
+      text-decoration: none;
+      color: inherit;
+      
+      &:hover {
+        color: $primary;
+      }
+    }
+  }
+}
+
+// Quote section styles
+.quote-section {
+  .blockquote {
+    border-left: 3px solid $primary;
+    padding-left: 1.5rem;
+    
+    p {
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+  }
+}
+
+// Enhanced social icons
+.social-section {
+  .social-link {
+    display: inline-block;
+    padding: 15px;
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    
+    &.linkedin {
+      background: linear-gradient(135deg, #0077b5, #005885);
+      box-shadow: 0 4px 15px rgba(0, 119, 181, 0.3);
+      
+      &:hover {
+        transform: translateY(-3px) scale(1.1);
+        box-shadow: 0 8px 25px rgba(0, 119, 181, 0.4);
+      }
+    }
+    
+    &.github {
+      background: linear-gradient(135deg, #333, #000);
+      box-shadow: 0 4px 15px rgba(51, 51, 51, 0.3);
+      
+      &:hover {
+        transform: translateY(-3px) scale(1.1);
+        box-shadow: 0 8px 25px rgba(51, 51, 51, 0.4);
+      }
+    }
+  }
+}
+
+// Experience section enhancements
+.experience-position {
+  border-left: 2px solid $gray-800;
+  padding-left: 15px;
+  margin-left: 10px;
+  margin-bottom: 2rem;
+  
+  h4 {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+  }
+  
+  .position-duration {
+    color: $gray-600;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// Enhanced resume item responsive layout
+.resume-item {
+  position: relative;
+  
+  .resume-content {
+    width: 100%;
+    
+    h3 {
+      margin-bottom: 0.5rem;
+    }
+    
+    .subheading {
+      margin-bottom: 1rem;
+    }
+  }
+  
+  .resume-date {
+    position: relative;
+    text-align: left;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: $gray-600;
+    font-weight: 600;
+    
+    span {
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+  }
+  
+  // Desktop layout
+  @media (min-width: 768px) {
+    .resume-content {
+      width: calc(100% - 20rem);
+      padding-right: 2rem;
+    }
+    
+    .resume-date {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 18rem;
+      text-align: right;
+      margin-top: 0;
+      padding-left: 1rem;
+      
+      span {
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+  
+  // Mobile improvements - keep company info and duration together
+  @media (max-width: 767px) {
+    .resume-content {
+      .subheading {
+        margin-bottom: 0.5rem;
+      }
+    }
+    
+    .resume-date {
+      margin-top: 0.5rem;
+      margin-bottom: 1.5rem;
+      padding: 0.75rem;
+      background: rgba($primary, 0.05);
+      border-radius: 8px;
+      border-left: 3px solid $primary;
+      
+      span {
+        font-size: 0.85rem;
+        
+        &:first-child {
+          font-weight: 700;
+          color: $primary;
+        }
+        
+        &:last-child {
+          font-style: italic;
+        }
+      }
+    }
+  }
+}
+
+// Improved list styling for projects
+.projects-list {
+  .project-item {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid $gray-300;
+    
+    &:last-child {
+      border-bottom: none;
+    }
+    
+    .project-title {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      
+      a {
+        color: $gray-800;
+        text-decoration: none;
+        
+        &:hover {
+          color: $primary;
+        }
+      }
+    }
+    
+    .project-date {
+      color: $gray-600;
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .project-description {
+      margin-bottom: 0.5rem;
+      line-height: 1.5;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+// Enhanced interests section styling
+#interests {
+  .list-icons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    padding: 0;
+    margin: 0;
+    
+    .list-inline-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 1.5rem;
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        border-color: $primary;
+        background: rgba(255, 255, 255, 0.95);
+      }
+      
+      i {
+        font-size: 4rem;
+        color: $primary;
+        margin-bottom: 1rem;
+        transition: all 0.3s ease;
+        
+        &:hover {
+          color: darken($primary, 10%);
+          transform: scale(1.1);
+        }
+      }
+      
+      .subheading {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: $gray-700;
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+    }
+    
+    // Responsive adjustments
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      
+      .list-inline-item {
+        padding: 1rem;
+        
+        i {
+          font-size: 3rem;
+        }
+        
+        .subheading {
+          font-size: 0.9rem;
+        }
+      }
+    }
+    
+    @media (max-width: 480px) {
+      grid-template-columns: 1fr 1fr;
+      
+      .list-inline-item {
+        padding: 0.75rem;
+        
+        i {
+          font-size: 2.5rem;
+        }
+        
+        .subheading {
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}
+
+// Animation for sections appearing in view
+.resume-section {
+  opacity: 0.8;
+  transform: translateY(20px);
+  transition: all 0.6s ease-in-out;
+  
+  &.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Screen reader only class
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Responsive improvements
+@media (max-width: 768px) {
+  .contact-info .contact-item {
+    margin: 0.25rem 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .social-section .social-link {
+    padding: 12px;
+  }
+  
+  .quote-section .blockquote p {
+    font-size: 1rem;
+  }
+  
+  .experience-position {
+    margin-left: 5px;
+    padding-left: 10px;
+    border-left-width: 3px;
+  }
+  
+  // Ensure proper stacking on mobile
+  section.resume-section {
+    .resume-item {
+      flex-direction: column !important;
+    }
+  }
+}
