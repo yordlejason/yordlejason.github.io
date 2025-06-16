@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Collapsible Test</title>
+    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/resume.css">
+    <style>
+        body { padding: 20px; font-family: Arial, sans-serif; }
+        .test-section { margin-bottom: 30px; border: 1px solid #ccc; padding: 20px; }
+    </style>
+</head>
+<body>
+    <div class="test-section">
+        <h2>Test Collapsible Functionality</h2>
+        
+        <div class="collapsible-container">
+            <div class="content-header">
+                <h4>Test Title</h4>
+                <button class="visibility-toggle" aria-label="Show details" data-locked="false">
+                    <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="collapsible-details">
+                <p>This is test content that should show/hide when hovering over the eye icon.</p>
+                <p>If you can see this text when hovering, the functionality is working!</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="js/resume.js"></script>
+    
+    <script>
+        console.log('Test page loaded');
+        console.log('jQuery version:', $.fn.jquery);
+        console.log('Toggle buttons found:', $('.visibility-toggle').length);
+    </script>
+</body>
+</html>

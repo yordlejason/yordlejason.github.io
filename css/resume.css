@@ -158,8 +158,8 @@ section.resume-section#about {
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 section.resume-section#experience {
-  background: #f8f9fa;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  box-shadow: inset 0 1px 3px rgba(33, 150, 243, 0.1);
 }
 section.resume-section#education {
   background: linear-gradient(135deg, #ffffff 0%, #f3e5f5 100%);
@@ -356,6 +356,22 @@ section.resume-section#interests {
 .projects-list .project-item .project-description:last-child {
   margin-bottom: 0;
 }
+.projects-list .project-item.collapsible-container .content-header .project-title {
+  flex: 1;
+}
+.projects-list .project-item.collapsible-container .content-header .project-title a {
+  color: #343a40;
+  text-decoration: none;
+  font-weight: 600;
+}
+.projects-list .project-item.collapsible-container .content-header .project-title a:hover {
+  color: #BD5D38;
+}
+.projects-list .project-item.collapsible-container .project-date {
+  color: #868e96;
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+}
 
 #interests .list-icons {
   display: grid;
@@ -471,6 +487,106 @@ section.resume-section#interests {
   section.resume-section .resume-item {
     flex-direction: column !important;
   }
+}
+.collapsible-container {
+  position: relative;
+}
+.collapsible-container .content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25rem;
+  margin: -0.25rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+.collapsible-container .content-header:hover {
+  background-color: rgba(0, 123, 255, 0.05);
+}
+.collapsible-container .content-header h3, .collapsible-container .content-header h4, .collapsible-container .content-header .project-title {
+  margin: 0;
+}
+.collapsible-container.hovering .content-header {
+  background-color: rgba(0, 123, 255, 0.05);
+}
+
+.visibility-toggle {
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  color: #868e96;
+  opacity: 1;
+}
+.visibility-toggle:hover {
+  background: rgba(189, 93, 56, 0.1);
+  color: #BD5D38;
+}
+.visibility-toggle:focus {
+  outline: 2px solid #BD5D38;
+  outline-offset: 2px;
+}
+.visibility-toggle[data-locked=true] {
+  color: #343a40;
+}
+.visibility-toggle[data-locked=true]:hover {
+  background: rgba(206, 212, 218, 0.1);
+  color: #343a40;
+}
+.visibility-toggle i {
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.collapsible-details {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  margin: 0;
+  padding: 0;
+}
+.collapsible-details.show {
+  max-height: 2000px;
+  opacity: 1;
+  margin: 0.75rem 0 0 0;
+  padding: 0.5rem 0;
+}
+
+#education .collapsible-container .collapsible-details {
+  min-height: 0;
+  max-height: none;
+  height: auto;
+  overflow: visible;
+  transition: opacity 0.3s ease;
+  margin: 0.75rem 0 0 0;
+  padding: 0.5rem 0;
+  opacity: 0;
+  visibility: hidden;
+}
+#education .collapsible-container .collapsible-details.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.position-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.position-header h4 {
+  margin: 0;
+}
+
+.position-details {
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+.position-details.collapsing {
+  height: 0;
+  opacity: 0;
 }
 
 /*# sourceMappingURL=resume.css.map */
