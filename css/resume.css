@@ -288,7 +288,7 @@ section.resume-section#interests {
     padding-left: 1rem;
   }
   .resume-item .resume-date span {
-    margin-bottom: 0.15rem;
+    margin-bottom: 0.5rem;
   }
 }
 @media (max-width: 767px) {
@@ -305,7 +305,6 @@ section.resume-section#interests {
   }
   .resume-item .resume-date span {
     font-size: 0.85rem;
-    margin-bottom: 0.15rem;
   }
   .resume-item .resume-date span:first-child {
     font-weight: 700;
@@ -316,13 +315,11 @@ section.resume-section#interests {
   }
 }
 
-/* Mobile resume date styling to match desktop */
 .mobile-resume-date {
   font-size: 0.9rem;
   color: #868e96;
   font-weight: 600;
 }
-
 .mobile-resume-date span {
   display: block;
   margin-bottom: 0.15rem;

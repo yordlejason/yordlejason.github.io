@@ -227,6 +227,18 @@ section.resume-section {
   }
 }
 
+// Mobile resume date styling to match desktop
+.mobile-resume-date {
+  font-size: 0.9rem;
+  color: #868e96;
+  font-weight: 600;
+
+  span {
+    display: block;
+    margin-bottom: 0.15rem;
+  }
+}
+
 // Improved list styling for projects
 .projects-list {
   .project-item {
