@@ -46,6 +46,52 @@
     });
   }
 
+  // Function to calculate duration between two dates
+  function calculateDuration(startDate, endDate = new Date()) {
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    
+    let years = end.getFullYear() - start.getFullYear();
+    let months = end.getMonth() - start.getMonth();
+    
+    if (months < 0) {
+      years--;
+      months += 12;
+    }
+    
+    // Format the duration string
+    let duration = '';
+    if (years > 0) {
+      duration += years + (years === 1 ? ' yr' : ' yrs');
+    }
+    if (months > 0) {
+      if (duration) duration += ' ';
+      duration += months + (months === 1 ? ' mo' : ' mos');
+    }
+    
+    return duration || '< 1 mo';
+  }
+
+  // Function to update all dynamic durations
+  function updateDurations() {
+    // Update all elements with data-duration attribute
+    $('[data-duration]').each(function() {
+      const startDate = $(this).data('duration');
+      const duration = calculateDuration(startDate);
+      const currentText = $(this).text();
+      
+      // Update the duration part while preserving the date range
+      if (startDate === '2023-08-01') {
+        $(this).html('Aug 2023 - Present · ' + duration);
+      } else if (startDate === '2019-08-01') {
+        $(this).html('Aug 2019 - Present · ' + duration);
+      }
+    });
+  }
+
+  // Update durations on page load
+  updateDurations();
+
   // Add smooth fade-in effect for sections on scroll (optional enhancement)
   function checkScroll() {
     $('.resume-section').each(function() {
