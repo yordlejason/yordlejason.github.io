@@ -106,7 +106,7 @@
     // Execute the callback (show/hide content)
     callback();
     
-    // Smaller delay and more conservative adjustment
+    // Reduced delay to match the faster CSS transitions (0.3s)
     setTimeout(() => {
       const newButtonRect = $button[0].getBoundingClientRect();
       const newButtonTopAbsolute = newButtonRect.top + $(window).scrollTop();
@@ -118,9 +118,9 @@
         // Use smooth scrolling to prevent jarring movements
         $('html, body').animate({
           scrollTop: currentScroll + displacement
-        }, 150); // Short, smooth animation
+        }, 100); // Faster animation to match CSS timing
       }
-    }, 100); // Slightly longer delay to let CSS transitions stabilize
+    }, 50); // Reduced delay to match faster CSS transitions
   }
   
   $(document).on('click', '.visibility-toggle', function(e) {
