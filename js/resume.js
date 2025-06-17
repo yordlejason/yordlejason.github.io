@@ -179,8 +179,10 @@
   
   // Add click functionality to the entire content header (position titles)
   $(document).on('click', '.content-header', function(e) {
-    // Don't trigger if the click was on the visibility toggle button itself
-    if ($(e.target).closest('.visibility-toggle').length > 0) {
+    // Don't trigger if the click was on the visibility toggle button, project link button, or project title link
+    if ($(e.target).closest('.visibility-toggle').length > 0 || 
+        $(e.target).closest('.project-link-button').length > 0 ||
+        $(e.target).closest('.project-title a').length > 0) {
       return;
     }
     
