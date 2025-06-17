@@ -88,26 +88,39 @@
       return;
     }
     
-    // Get the button's position relative to viewport before expansion
+    // Check if we're near the bottom of the viewport where displacement matters
     const buttonRect = $button[0].getBoundingClientRect();
+    const viewportHeight = $(window).height();
+    
+    // Only do position preservation if the button is in the lower half of viewport
+    // This reduces unnecessary scroll adjustments that can cause flashing
+    if (buttonRect.top < viewportHeight * 0.5) {
+      callback();
+      return;
+    }
+    
+    // Get the button's position relative to viewport before expansion
     const viewportTop = $(window).scrollTop();
     const buttonTopAbsolute = buttonRect.top + viewportTop;
     
     // Execute the callback (show/hide content)
     callback();
     
-    // Small delay to allow DOM to update, then adjust scroll to keep button under cursor
+    // Smaller delay and more conservative adjustment
     setTimeout(() => {
       const newButtonRect = $button[0].getBoundingClientRect();
       const newButtonTopAbsolute = newButtonRect.top + $(window).scrollTop();
       const displacement = newButtonTopAbsolute - buttonTopAbsolute;
       
-      // Adjust scroll to compensate for the displacement
-      if (Math.abs(displacement) > 1) { // Only adjust if significant movement
+      // Only adjust if displacement is significant and would affect user experience
+      if (Math.abs(displacement) > 5) { // Increased threshold to reduce minor adjustments
         const currentScroll = $(window).scrollTop();
-        $(window).scrollTop(currentScroll + displacement);
+        // Use smooth scrolling to prevent jarring movements
+        $('html, body').animate({
+          scrollTop: currentScroll + displacement
+        }, 150); // Short, smooth animation
       }
-    }, 50);
+    }, 100); // Slightly longer delay to let CSS transitions stabilize
   }
   
   $(document).on('click', '.visibility-toggle', function(e) {
