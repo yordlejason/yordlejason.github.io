@@ -164,21 +164,83 @@
     });
   });
   
-  // Enhanced hover handling with cursor position preservation
-  $(document).on('mouseenter', '.visibility-toggle', function() {
-    const $button = $(this);
-    const $icon = $button.find('i');
-    const $details = $button.closest('.collapsible-container').find('.collapsible-details');
-    const isLocked = $button.attr('data-locked') === 'true';
-    const containerId = $button.closest('.collapsible-container').index();
+  // Add click functionality to the entire content header (position titles)
+  $(document).on('click', '.content-header', function(e) {
+    // Don't trigger if the click was on the visibility toggle button itself
+    if ($(e.target).closest('.visibility-toggle').length > 0) {
+      return;
+    }
     
-    // Clear any pending hide timeout
+    e.preventDefault();
+    const $container = $(this).closest('.collapsible-container');
+    const $button = $container.find('.visibility-toggle');
+    const $icon = $button.find('i');
+    const $details = $container.find('.collapsible-details');
+    const isLocked = $button.attr('data-locked') === 'true';
+    const containerId = $container.index();
+    
+    // Debug logging
+    console.log('Content header clicked:', {
+      hasButton: $button.length > 0,
+      hasIcon: $icon.length > 0,
+      hasDetails: $details.length > 0,
+      isLocked: isLocked,
+      containerId: containerId
+    });
+    
+    // Clear any hover timeout when clicking
     if (hoverTimeouts.has(containerId)) {
       clearTimeout(hoverTimeouts.get(containerId));
       hoverTimeouts.delete(containerId);
     }
     
-    // Only change to open eye and show details if not locked
+    // If locked, unlock and fold
+    if (isLocked) {
+      $button.attr('data-locked', 'false');
+      $button.attr('aria-label', 'Show details on hover');
+      // Change back to closed eye and hide details
+      preserveCursorPosition($button, () => {
+        if ($icon.length > 0) {
+          $icon.removeClass('fa-lock fa-eye').addClass('fa-eye-slash');
+        } else {
+          $button.find('.fallback-icon').text('👁️');
+        }
+        $details.removeClass('show');
+      });
+      return;
+    }
+    
+    // If not locked, clicking should lock it open
+    $button.attr('data-locked', 'true');
+    $button.attr('aria-label', 'Locked - click to unlock');
+    // Change to lock icon and show details
+    preserveCursorPosition($button, () => {
+      if ($icon.length > 0) {
+        $icon.removeClass('fa-eye fa-eye-slash').addClass('fa-lock');
+      } else {
+        $button.find('.fallback-icon').text('🔒');
+      }
+      $details.addClass('show');
+    });
+  });
+  
+  // Enhanced hover handling with cursor position preservation
+  // Function to show details
+  function showDetails($container) {
+    const $button = $container.find('.visibility-toggle');
+    const $icon = $button.find('i');
+    const $details = $container.find('.collapsible-details');
+    const isLocked = $button.attr('data-locked') === 'true';
+    
+    // Debug logging
+    console.log('showDetails called:', {
+      hasButton: $button.length > 0,
+      hasIcon: $icon.length > 0,
+      hasDetails: $details.length > 0,
+      isLocked: isLocked,
+      currentDetailsClasses: $details.attr('class')
+    });
+    
     if (!isLocked) {
       preserveCursorPosition($button, () => {
         if ($icon.length > 0) {
@@ -187,18 +249,19 @@
           $button.find('.fallback-icon').text('👀');
         }
         $details.addClass('show');
+        console.log('Details should now be visible, classes:', $details.attr('class'));
       });
     }
-  });
+  }
   
-  $(document).on('mouseleave', '.visibility-toggle', function() {
-    const $button = $(this);
+  // Function to hide details with timeout
+  function hideDetailsWithTimeout($container, delay = 300) {
+    const $button = $container.find('.visibility-toggle');
     const $icon = $button.find('i');
-    const $details = $button.closest('.collapsible-container').find('.collapsible-details');
+    const $details = $container.find('.collapsible-details');
     const isLocked = $button.attr('data-locked') === 'true';
-    const containerId = $button.closest('.collapsible-container').index();
+    const containerId = $container.index();
     
-    // Only change back to closed eye and hide details if not locked
     if (!isLocked) {
       // Clear any existing timeout for this container
       if (hoverTimeouts.has(containerId)) {
@@ -219,54 +282,74 @@
           });
         }
         hoverTimeouts.delete(containerId);
-      }, 300); // Longer delay for stability
+      }, delay);
       
       hoverTimeouts.set(containerId, timeoutId);
     }
-  });
+  }
   
-  // Also handle hover on the content header to prevent hiding when moving between elements
+  // Enhanced hover handling for the entire content header (icons + position titles)
   $(document).on('mouseenter', '.content-header', function() {
-    const $button = $(this).find('.visibility-toggle');
+    const $container = $(this).closest('.collapsible-container');
+    const $button = $container.find('.visibility-toggle');
     const isLocked = $button.attr('data-locked') === 'true';
-    const containerId = $(this).closest('.collapsible-container').index();
+    const containerId = $container.index();
     
-    if (!isLocked && hoverTimeouts.has(containerId)) {
+    // Debug logging
+    console.log('Content header hover detected:', {
+      hasContainer: $container.length > 0,
+      hasButton: $button.length > 0,
+      isLocked: isLocked,
+      containerId: containerId
+    });
+    
+    // Clear any pending hide timeout
+    if (hoverTimeouts.has(containerId)) {
       clearTimeout(hoverTimeouts.get(containerId));
       hoverTimeouts.delete(containerId);
+    }
+    
+    // Show details when hovering over the entire content header
+    showDetails($container);
+    
+    // Add visual feedback for the entire header
+    if (!isLocked) {
+      $(this).addClass('hovering');
     }
   });
   
   $(document).on('mouseleave', '.content-header', function() {
-    const $button = $(this).find('.visibility-toggle');
-    const $icon = $button.find('i');
-    const $details = $(this).closest('.collapsible-container').find('.collapsible-details');
+    const $container = $(this).closest('.collapsible-container');
+    const $button = $container.find('.visibility-toggle');
     const isLocked = $button.attr('data-locked') === 'true';
-    const containerId = $(this).closest('.collapsible-container').index();
     
-    // Only hide if not locked
-    if (!isLocked) {
-      // Clear any existing timeout
-      if (hoverTimeouts.has(containerId)) {
-        clearTimeout(hoverTimeouts.get(containerId));
-      }
-      
-      const timeoutId = setTimeout(function() {
-        if ($button.length && $button.attr('data-locked') !== 'true') {
-          preserveCursorPosition($button, () => {
-            if ($icon.length > 0) {
-              $icon.removeClass('fa-eye').addClass('fa-eye-slash');
-            } else {
-              $button.find('.fallback-icon').text('👁️');
-            }
-            $details.removeClass('show');
-          });
-        }
-        hoverTimeouts.delete(containerId);
-      }, 400); // Even longer delay for content header
-      
-      hoverTimeouts.set(containerId, timeoutId);
+    // Remove visual feedback
+    $(this).removeClass('hovering');
+    
+    // Hide details with timeout when leaving the content header
+    hideDetailsWithTimeout($container, 400);
+  });
+  
+  // Keep the specific hover handling for the visibility toggle button for backward compatibility
+  $(document).on('mouseenter', '.visibility-toggle', function() {
+    const $container = $(this).closest('.collapsible-container');
+    const containerId = $container.index();
+    
+    // Clear any pending hide timeout
+    if (hoverTimeouts.has(containerId)) {
+      clearTimeout(hoverTimeouts.get(containerId));
+      hoverTimeouts.delete(containerId);
     }
+    
+    // Show details when hovering specifically on the button
+    showDetails($container);
+  });
+  
+  $(document).on('mouseleave', '.visibility-toggle', function() {
+    const $container = $(this).closest('.collapsible-container');
+    
+    // Hide details when leaving the button (with shorter timeout since it's more specific)
+    hideDetailsWithTimeout($container, 200);
   });
   
   // Initialize all eye icons to closed state

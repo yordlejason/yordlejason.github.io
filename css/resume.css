@@ -518,15 +518,15 @@ section.resume-section#interests {
   margin: -0.25rem;
   border-radius: 4px;
   transition: background-color 0.2s ease;
-}
-.collapsible-container .content-header:hover {
-  background-color: rgba(0, 123, 255, 0.05);
+  cursor: pointer;
+  position: relative;
 }
 .collapsible-container .content-header h3, .collapsible-container .content-header h4, .collapsible-container .content-header .project-title {
   margin: 0;
+  transition: color 0.2s ease;
 }
-.collapsible-container.hovering .content-header {
-  background-color: rgba(0, 123, 255, 0.05);
+.collapsible-container .position-duration {
+  transition: color 0.2s ease;
 }
 
 .visibility-toggle {

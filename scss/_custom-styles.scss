@@ -478,19 +478,20 @@ section.resume-section {
     margin: -0.25rem;
     border-radius: 4px;
     transition: background-color 0.2s ease;
+    cursor: pointer; // Make it clear the entire header is hoverable
+    position: relative;
     
-    &:hover {
-      background-color: rgba(0, 123, 255, 0.05);
-    }
+    // No visual hover effects - just functional behavior
     
     h3, h4, .project-title {
       margin: 0;
+      transition: color 0.2s ease; // Keep transition for smooth behavior
     }
   }
   
-  // Better hover indication
-  &.hovering .content-header {
-    background-color: rgba(0, 123, 255, 0.05);
+  // Enhanced hover effects for position durations
+  .position-duration {
+    transition: color 0.2s ease;
   }
 }
 
