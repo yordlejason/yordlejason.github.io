@@ -5,6 +5,11 @@ body {
   color: #868e96;
 }
 
+/* Custom collapse animation speed - slower than default */
+.collapsing {
+  transition: height 0.6s ease !important;
+}
+
 @media (min-width: 992px) {
   body {
     padding-top: 0;
