@@ -605,7 +605,7 @@ section.resume-section#interests {
   background: transparent;
 }
 .collapsible-details.show {
-  max-height: 2000px;
+  max-height: none;
   opacity: 1;
   margin: 0.75rem 0 0 0;
   padding: 0.5rem 0;

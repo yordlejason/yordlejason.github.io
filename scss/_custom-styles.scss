@@ -593,7 +593,7 @@ section.resume-section {
   
   // When shown, expand naturally
   &.show {
-    max-height: 2000px; // Large enough for content
+    max-height: none;
     opacity: 1;
     margin: 0.75rem 0 0 0;
     padding: 0.5rem 0;
