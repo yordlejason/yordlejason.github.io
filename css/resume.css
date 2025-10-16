@@ -5,11 +5,6 @@ body {
   color: #868e96;
 }
 
-/* Custom collapse animation speed - slower than default */
-.collapsing {
-  transition: height 0.6s ease !important;
-}
-
 @media (min-width: 992px) {
   body {
     padding-top: 0;
@@ -361,6 +356,25 @@ section.resume-section#interests {
 }
 .projects-list .project-item .project-description:last-child {
   margin-bottom: 0;
+}
+.projects-list .project-item .project-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+.projects-list .project-item .project-gallery .project-gallery-item {
+  margin: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f8f9fa;
+  box-shadow: 0 4px 12px rgba(33, 37, 41, 0.08);
+}
+.projects-list .project-item .project-gallery .project-gallery-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .projects-list .project-item.collapsible-container .content-header .project-title {
   flex: 1;
